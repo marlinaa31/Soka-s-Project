@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain Code</title>
+    <link rel="stylesheet" href="/static/css/edge.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Chain Code</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('calculate_chain_code') }}" enctype="multipart/form-data" method="POST">
+                <input type="file" name="img" accept="image/*" required>
+
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+
+            <br>
+            <div class="result-container">
+                {% if original_image %}
+                <div class="image-container">
+                    <h2>Original Image</h2>
+                    <img class="original" src="{{ original_image }}" alt="Original Image">
+                </div>
+                {% endif %}
+                {% if chain_code %}
+                <div class="chain-code-container">
+                    <h2>Chain Code</h2>
+                    <p>{{ chain_code }}</p>
+                    <p>Formatted Chain Code:</p>
+                    <div class="formatted-chain-code">
+                        {% for point in chain_code %}
+                        <span>{{ point }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

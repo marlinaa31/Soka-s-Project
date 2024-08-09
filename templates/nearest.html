@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling</title>
+    <link rel="stylesheet" href="/static/css/scaling.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Nearest Neighbor</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('nearest') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+
+                <br>
+                <label for="scale_x">Scale X:</label>
+                <input type="text" name="scale_x" required>
+                <br>
+                <label for="scale_y">Scale Y:</label>
+                <input type="text" name="scale_y" required>
+
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+
+            <br>
+            <div class="result-container">
+                {% if original_image %}
+                <div class="image-container">
+                    <h2>Gambar Asli</h2>
+                    <img class="original" src="{{ original_image }}" alt="Original Image">
+                </div>
+                {% endif %}
+                {% if nearest_image %}
+                <div class="image-container">
+                    <h2>Hasil Nearest Neighbor Scaling</h2>
+                    <img class="nearest" src="{{ nearest_image }}" alt="nearest Image">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

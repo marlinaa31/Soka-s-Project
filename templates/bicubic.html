@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaling</title>
+    <link rel="stylesheet" href="/static/css/bilinear.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Bicubic</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('bicubic') }}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <br>
+
+                <!-- Pindahkan input scale ke bawah -->
+                <label for="scale_x">Scale x:</label>
+                <input type="text" name="scale_x" required>
+                <br>
+                <label for="scale_y">Scale y:</label>
+                <input type="text" name="scale_y" required>
+                <br>
+
+                <!-- Tombol Submit -->
+                <button type="submit">Submit</button>
+            </form>
+
+            <br>
+            <div class="result-container">
+                {% if original_image and bicubic_image %}
+                <div class="image-container">
+                    <div class="image-subcontainer">
+                        <h2>Gambar Asli</h2>
+                        <img class="original" src="{{ original_image }}" alt="Original Image">
+                    </div>
+                    <div class="image-subcontainer">
+                        <h2>Hasil Bicubic Scaling</h2>
+                        <img class="bicubic" src="{{ bicubic_image }}" alt="Scaled Image">
+                    </div>
+                </div>
+                <div class="pixel-container">
+                    <h3>10 Pixel Values for Scaled Bicubic Image:</h3>
+                    <table class="pixel-table">
+                        {% for row in bicubic_image_data[:10] %}
+                        <tr>
+                            {% for pixel_value in row[:10] %}
+                            <td>{{ pixel_value }}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Tombol Back -->
+            <button class="back-button" onclick="goBack()">Back</button>
+
+            <script>
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

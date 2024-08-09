@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Noise</title>
+    <link rel="stylesheet" href="/static/css/edge.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Remove Noise</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('remove_noise') }}" enctype="multipart/form-data" method="POST">
+                <input type="file" name="img" accept="image/*" required>
+                <br>
+                <label for="filter_type">Choose a filter:</label>
+                <select name="filter_type" id="filter_type">
+                    <option value="median">Median Filter</option>
+                    <option value="lowpass">Low-pass Filter</option>
+                    <option value="rank-order">Rank-Order Filter</option>
+                    <option value="outlier">Outlier Method</option>
+                </select>
+                <br>
+                <button type="submit">Apply Filter</button>
+            </form>
+
+            <br>
+
+            <div class="result-container">
+                {% if img %}
+                    <div class="image-container">
+                        <h2>Original Image</h2>
+                        <img src="{{ img }}" alt="Original Image">
+                    </div>
+                {% endif %}
+                {% if img2 %}
+                    <div class="image-container">
+                        <h2>Cleaned Image ({{ filter_type }})</h2>
+                        <img src="{{ img2 }}" alt="Cleaned Image">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+     <!-- Tombol Back -->
+     <button class="back-button" onclick="goBack()">Back</button>
+
+     <script>
+         function goBack() {
+             window.history.back();
+         }
+     </script>
+</body>
+</html>

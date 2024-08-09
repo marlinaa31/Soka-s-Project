@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histogram Equalization</title>
+    <link rel="stylesheet" href="/static/css/histo.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Histogram Equalization</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <form action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="POST">
+            <label class="file-label">
+                Choose File
+                <input name="img" type="file" id="img" accept="image/*" class="file-input" onchange="updateFileName()"/>
+            </label>
+            <span id="file-info">No file selected</span>
+            <div class="button-container">
+                <input type="submit" value="Upload" class="submit-button"/>
+            </div>
+        </form>
+
+        <div class="image-and-histogram">
+            {% if img %}
+            <div class="image-container">
+                <h4>Foto Inputan</h4>
+                <img src="{{ img }}" alt="Uploaded Image">
+            </div>
+
+            <div class="histogram-container">
+                <h4>Histogram Gambar</h4>
+                <img src="{{ histogram }}" alt="Histogram Image">
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="bottom-images">
+            {% if histogram2 %}
+            <div class="image-container">
+                <h4>Histogram Equalization</h4>
+                <img src="{{ histogram2 }}" alt="Second Image">
+            </div>
+            {% endif %}
+            
+            {% if img2 %}
+            <div class="image-container">
+                <h4>Foto Equal</h4>
+                <img src="{{ img2 }}" alt="Equalized Image">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function updateFileName() {
+            const fileInput = document.getElementById('img');
+            const fileInfo = document.getElementById('file-info');
+            if (fileInput.files.length > 0) {
+                fileInfo.textContent = fileInput.files[0].name;
+            } else {
+                fileInfo.textContent = 'No file selected';
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+</body>
+</html>

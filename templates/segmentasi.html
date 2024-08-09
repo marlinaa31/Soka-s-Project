@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segmentasi</title>
+    <link rel="stylesheet" href="/static/css/segmentasi.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Segmentasi</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('segmentasi') }}" enctype="multipart/form-data" method="POST">
+                <input type="file" name="file" accept="image/*" required>
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+            <br>
+            <div class="result-container">
+                {% if original_image %}
+                <div class="image-container">
+                    <h2>Gambar Asli</h2>
+                    <img class="original" src="{{ original_image }}" alt="Original Image">
+                </div>
+                {% endif %}
+                {% if segmentation_image %}
+                <div class="image-container">
+                    <h2>Hasil Segmentasi</h2>
+                    <img class="segmentation" src="{{ segmentation_image }}" alt="segmentation Result">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+</body>
+</html>

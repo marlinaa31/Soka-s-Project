@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huffman Coding Compression</title>
+    <link rel="stylesheet" href="/static/css/edge.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Huffman Coding Compression</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('compress') }}" enctype="multipart/form-data" method="POST">
+                 
+                    <label class="text-xl p-2" for="message">Enter your text:</label>
+                    <textarea id="message" name="message" rows="2" cols="50" class="border rounded p-2" required></textarea>
+                    <br>
+                <button type="submit">Compress</button>
+            </form>
+
+            <div id="result-container">
+                {% if compressed_message %}
+                <h2>Compressed Message:</h2>
+                <p>{{ compressed_message }}</p>
+                <h2>Huffman Codes:</h2>
+                <ul>
+                    {% for symbol, code in huffman_codes.items() %}
+                    <li>{{ symbol }} : {{ code }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% if error %}
+                <p>Error: {{ error }}</p>
+                {% endif %}
+            </div>
+
+<!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaussian Blur on Face</title>
+    <link rel="stylesheet" href="/static/css/blur.css">
+    <style>
+        body {
+            background-image: #ffc0cb;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /*Tambahkan atribut di atas untuk gambar latar belakang dengan efek parallax*/
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Face Blurring</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+
+            <form action="{{ url_for('blur') }}" enctype="multipart/form-data" method="POST">
+                <input type="file" name="file" accept="image/*" required>
+                <br>
+                <label for="blur_level">Tingkat Blur:</label>
+                <input type="range" id="blur_level" name="blur_level" min="0" max="100" step="1" value="0">
+                <output for="blur_level" id="blur_value">0%</output>
+                <br>
+                <div class="button-container">
+                    <input type="submit" value="Upload" class="submit-button" />
+                </div>
+            </form>
+            </form>
+            <script>
+                const blurLevel = document.getElementById("blur_level");
+                const blurValue = document.getElementById("blur_value");
+
+                blurLevel.addEventListener("input", function () {
+                    const level = this.value;
+                    blurValue.textContent = level + "%";
+                });
+
+                function goBack() {
+                    window.history.back();
+                }
+            </script>
+
+            <br>
+            <div class="result-container">
+                {% if original_image %}
+                <div class="image-container">
+                    <h2>Gambar Asli</h2>
+                    <img class="original" src=" {{original_image}} " alt="Original Image">
+                </div>
+                <div class="image-container">
+                    <h2>Gambar Terblur</h2>
+                    <img class="blurred" src="{{blurred_image}} " alt="Blurred Image">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+</body>
+
+</html>

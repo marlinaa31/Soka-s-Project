@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noisy Image</title>
+    <link rel="stylesheet" href="/static/css/edge.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="#">Adding Noise to Image</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="content">
+            <form action="{{ url_for('adding_noise') }}" enctype="multipart/form-data" method="POST">
+                <label for="file">Choose an image:</label>
+                <input type="file" name="file" accept="image/*" required>
+                <br>
+                <label for="noise_type">Select noise type:</label>
+                <select name="noise_type" id="noise_type">
+                    <option value="salt_and_pepper">Salt and Pepper</option>
+                    <option value="gaussian">Gaussian</option>
+                    <option value="speckle">Speckle</option>
+                    <option value="periodic">Periodic</option>
+                </select>
+                <br>
+                <button type="submit">Upload Image</button>
+            </form>
+
+            <br>
+    
+            <div class="result-container">
+                {% if original_image %}
+                <div class="image-container">
+                    <h2>Original Image</h2>
+                    <img src="{{ original_image }}" alt="Original Image">
+                </div>
+                {% endif %}
+                {% if noisy_image %}
+                <div class="image-container">
+                    <h2>Noisy Image</h2>
+                    <img src="{{ noisy_image }}" alt="Noisy Image">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Tombol Back -->
+    <button class="back-button" onclick="goBack()">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
