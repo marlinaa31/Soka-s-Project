@@ -1,0 +1,142 @@
+body {
+    background-color: #ffc0cb;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.file-label {
+    display: flex;
+    align-items: center;
+}
+
+.file-input {
+    display: none;
+}
+
+#file-info {
+    margin-left: 10px;
+}
+
+.back-button {
+    margin-top: 10px;
+    background-color: #5f84a2; /* Warna latar belakang yang sama */
+    color: #fff; /* Warna teks yang sama */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #537d90;
+}
+
+.navbar {
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.nav-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.nav-list li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container {
+    background-color: #ffc0cb;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.file-label {
+    display: flex;
+    align-items: center; /* Tetapkan hanya align-items agar elemen berada di tengah secara vertikal */
+    justify-content: flex-start; /* Menggeser teks ke sisi kiri */
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 10px 20px; /* Atur padding kembali ke 10px pada samping kiri dan kanan */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.choose-file-button {
+    flex: 1; /* Agar tombol "Choose File" mengisi sebagian dari label */
+}
+
+.file-input {
+    display: none;
+}
+
+.submit-button {
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-left: 10px; /* Memindahkan tombol "Upload" ke samping tombol "Choose File" */
+}
+
+.image-and-histogram {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Memungkinkan perubahan ke tata letak berdasarkan ukuran layar */
+}
+
+.image-container, .histogram-container, .side-by-side-images .image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img, .histogram-container img, .side-by-side-images .image-container img {
+    max-width: 100%;
+    max-height: 300px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.bottom-images {
+    display: flex;
+    flex-wrap: wrap; /* Memungkinkan perubahan tata letak berdasarkan ukuran layar */
+    justify-content: center; /* Mengatur agar gambar-gambar berada di tengah secara horizontal */
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.bottom-images .image-container {
+    flex: 1;
+    text-align: center;
+    margin-top: 20px; /* Jarak antara gambar di bawah */
+}
+
+.bottom-images .image-container img {
+    max-width: 100%;
+    max-height: 300px; /* Sesuaikan tinggi maksimum sesuai kebutuhan */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,129 @@
+
+body {
+    background-color: #ffc0cb;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.back-button {
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+.back-button:hover {
+    background-color: #537d90;
+}
+
+/* CSS untuk container utama */
+.navbar {
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 5px 0;
+    text-align: center;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .nav-list li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .container {
+    background-color: #ffc0cb;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .file-label {
+    display: flex;
+    align-items: center; /* Tetapkan hanya align-items agar elemen berada di tengah secara vertikal */
+    justify-content: flex-start; /* Menggeser teks ke sisi kiri */
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 10px 20px; /* Atur padding kembali ke 10px pada samping kiri dan kanan */
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto 20px;
+    border-radius: 5px;
+    width: fit-content;
+  }
+  
+  .choose-file-button {
+    flex: 1; /* Agar tombol "Choose File" mengisi sebagian dari label */
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .submit-button {
+    background-color: #5f84a2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-left: 10px; /* Memindahkan tombol "Upload" ke samping tombol "Choose File" */
+  }
+  
+  /* CSS untuk form */
+  
+  
+  /* CSS untuk gambar-gambar */
+  /* CSS untuk gambar-gambar */
+  .result-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+     /* Ubah warna background */
+    padding: 20px; /* Tambahkan padding agar background lebih penuh */
+  }
+  
+  /* CSS untuk gambar */
+  .image-container {
+    margin: 0 10px;
+    text-align: center;
+  }
+  
+  /* CSS untuk gambar asli */
+  .image-container img.original {
+    max-width: 100%; /* Ubah lebar maksimum menjadi 100% agar gambar mengisi container */
+    height: auto; /* Agar gambar tidak terlalu besar */
+  }
+  
+  /* CSS untuk gambar hasil edge detection */
+  .image-container img.edge {
+    max-width: 100%; /* Ubah lebar maksimum menjadi 100% agar gambar mengisi container */
+    height: auto; /* Agar gambar tidak terlalu besar */
+  }
+  
+  
+  label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    margin-top: 5px;
+}
